@@ -5,7 +5,6 @@ export const GET = async (
   req: NextRequest,
   { params }: { params: { id: string } }
 ) => {
-  console.log(params.id);
 
   const post = await prisma?.post.findUnique({
     where: {

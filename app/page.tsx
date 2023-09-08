@@ -12,7 +12,7 @@ export default async function Home() {
         <LeftSidebar />
       </div>
       <div>
-        <Timeline />
+        <Timeline userId={"64f83ca89e819bef241e496d"}/>
       </div>
       <div>
       <LeftSidebar />

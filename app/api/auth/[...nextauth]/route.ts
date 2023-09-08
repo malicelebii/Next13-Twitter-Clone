@@ -32,17 +32,22 @@ export const authOptions: NextAuthOptions = {
   callbacks: {
     async jwt({ token, user }) {
       token.id = user.id;
-      console.log(user.id);
+      // token.accessToken = "asd"
 
       return token;
     },
     async session({ session, token, user }) {
+      
+      // session.user.token = accessToken;
+
+console.log("session");
+
       // Send properties to the client, like an access_token and user id from a provider.
       session.user = user;
       return session;
     },
   },
-  
+  jwt:{secret:process.env.NEXTAUTH_SECRET}
 
   // cookies:{
 
