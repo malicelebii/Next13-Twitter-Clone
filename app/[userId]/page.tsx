@@ -1,3 +1,4 @@
+import FollowButton from "@/components/follow-button";
 import LeftSidebar from "@/components/left-sidebar";
 
 export default async function UserProfile({
@@ -5,12 +6,11 @@ export default async function UserProfile({
 }: {
   params: { userId: string };
 }) {
-  
   const data = await fetch(
-    `http://localhost:3000/api/users/profile/${params.userId}`,{method:"GET"}
+    `http://localhost:3000/api/users/profile/${params.userId}`,
+    { method: "GET" }
   );
   const user = await data.json();
-  
 
 
   return (
@@ -45,9 +45,7 @@ export default async function UserProfile({
               </div>
             </div>
           </div>
-          <button className="mt-4 bg-blue-500 hover:bg-blue-600 text-white py-2 px-4 rounded">
-            Takip Et
-          </button>
+        <FollowButton followId={params.userId}/>         
         </div>
       </div>
       <div className="w-1/4">
