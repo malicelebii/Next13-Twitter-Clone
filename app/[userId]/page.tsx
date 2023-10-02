@@ -55,7 +55,11 @@ const session =await getServerSession(authOptions);
             </div>
           </div>
           { (userId !== user.id && !user.followedByIDs.includes(userId))&&
-        <FollowButton followId={params.userId}/>         
+        <FollowButton followId={params.userId} buttonType={"follow"}/>         
+      }
+      {
+        user.followedByIDs.includes(userId) && 
+        <FollowButton followId={params.userId} buttonType={"unfollow"} />        
       }
         </div>
       </div>
