@@ -1,20 +1,11 @@
-"use client";
-
-import { SessionProvider, useSession } from "next-auth/react";
-import React, { useState } from "react";
+import WritePost from "@/components/write-post";
+import React from "react";
 
 function Post() {
-  const [title, setTitle] = useState("second");
-  const [content, setContent] = useState("second");
 
   return (
     <div>
-        <form>
-          <div>
-          </div>
-          
-          <button>Submit et</button>
-        </form>
+       <WritePost />
     </div>
   );
 }
