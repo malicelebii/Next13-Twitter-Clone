@@ -42,6 +42,7 @@ export default function Form({ type }: { type: "login" | "register" }) {
               body: JSON.stringify({
                 email: e.currentTarget.email.value,
                 password: e.currentTarget.password.value,
+                name:e.currentTarget.name.value,
               }),
             }).then(async (res) => {
               setLoading(false);
@@ -91,6 +92,23 @@ export default function Form({ type }: { type: "login" | "register" }) {
             className="mt-1 block w-full appearance-none rounded-md border border-gray-300 px-3 py-2 placeholder-gray-400 shadow-sm focus:border-black focus:outline-none focus:ring-black sm:text-sm"
           />
         </div>
+        {type =="register" &&
+        <div>
+        <label
+          htmlFor="name"
+          className="block text-xs text-gray-600 uppercase"
+        >
+          Name
+        </label>
+        <input
+          id="name"
+          name="name"
+          type="name"
+          required
+          className="mt-1 block w-full appearance-none rounded-md border border-gray-300 px-3 py-2 placeholder-gray-400 shadow-sm focus:border-black focus:outline-none focus:ring-black sm:text-sm"
+        />
+      </div>}
+        
         <button
           disabled={loading}
           className={`${

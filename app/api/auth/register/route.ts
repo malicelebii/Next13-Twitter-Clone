@@ -4,7 +4,7 @@ import { hash } from "bcrypt";
 import { NextResponse } from "next/server";
 
 export async function POST(req: Request) {
-  const { email, password } = await req.json();
+  const { email, password , name , } = await req.json();
   const exists = await prisma.user.findUnique({
     where: {
       email,
@@ -17,11 +17,11 @@ export async function POST(req: Request) {
       data: {
         email,
         password: await hash(password, 10),
-        name: "",
+        name,
         posts: {
           create: [],
         },
-      },
+      }
     });
     return NextResponse.json(user);
   }
