@@ -1,5 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import prisma from "@/lib/prisma";
+import { getToken } from "next-auth/jwt";
+import { getUserId } from "helpers/user";
 
 interface PostType {
   title: string;
@@ -15,10 +17,15 @@ export const GET = async (req: NextRequest) => {
 
 export const POST = async (req: NextRequest) => {
   const res = await req.json();
-  const { title, content, userId } = res;
+
+  const userId = await getUserId(req);
+
+  const user = await prisma.user.findUnique({ where: { id: userId } });
+
+  const {  content } = res;
 
   const newPost = await prisma.post.create({
-    data: { title, content, userId },
+    data: {  content, userId, author: user?.name },
   });
 
   // console.log(req.credentials.);
