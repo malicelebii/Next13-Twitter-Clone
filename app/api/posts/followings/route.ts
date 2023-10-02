@@ -1,16 +1,9 @@
 import prisma from "@/lib/prisma";
 import { NextRequest, NextResponse } from "next/server";
-import { authOptions } from "../../auth/[...nextauth]/route";
-import { getServerSession } from "next-auth";
-import { getToken } from "next-auth/jwt";
+import { getUserId } from "helpers/user";
 
 export const GET = async (req: NextRequest) => {
-
-  
-  const payload = await getToken({ req, secret: process.env.NEXTAUTH_SECRET });
-  // console.log(payload);
-
-  const userId = payload?.sub;
+  const userId = await getUserId(req);
 
   let posts = await prisma.post.findMany({
     where: { userId: userId },
@@ -37,7 +30,7 @@ export const GET = async (req: NextRequest) => {
     posts = [...posts, ...followingPosts.flat()];
   }
 
+  posts.sort((a,b)=>b.createdAt-a.createdAt);
 
   return NextResponse.json({ posts });
-
 };
