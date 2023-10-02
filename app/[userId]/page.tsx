@@ -1,5 +1,8 @@
 import FollowButton from "@/components/follow-button";
 import LeftSidebar from "@/components/left-sidebar";
+import { getServerSession } from "next-auth/next";
+import { authOptions } from "@/app/api/auth/[...nextauth]/route";
+import { redirect } from "next/navigation";
 export default async function UserProfile({
   params,
 }: {
@@ -11,10 +14,16 @@ export default async function UserProfile({
   );
   const user = await data.json();
 console.log(user);
+const session =await getServerSession(authOptions);
+  let userId;
+  if (session) {
+    userId=session.token.sub;
+  }
 
+ 
 
   return (
-    <div className="flex justify-between m-5 mx-auto gap-10 max-w-5xl bg-slate-400">
+    <div className="flex justify-between m-5 mx-auto gap-10 max-w-5xl  bg-slate-400">
       <div className="w-1/5">
         <LeftSidebar />
       </div>
@@ -45,7 +54,9 @@ console.log(user);
               </div>
             </div>
           </div>
+          { (userId !== user.id && !user.followedByIDs.includes(userId))&&
         <FollowButton followId={params.userId}/>         
+      }
         </div>
       </div>
       <div className="w-1/4">

@@ -9,6 +9,7 @@ export const GET = async (req: NextRequest,{params}:{params:{userId:string}}) =>
         id: params.userId,
       },
       select:{
+        id:true,
         email:true,
         name:true,
         followedByIDs:true,
