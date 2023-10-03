@@ -3,6 +3,7 @@ import LeftSidebar from "@/components/left-sidebar";
 import { getServerSession } from "next-auth/next";
 import { authOptions } from "@/app/api/auth/[...nextauth]/route";
 import { redirect } from "next/navigation";
+import UploadImage from "@/components/upload-image";
 export default async function UserProfile({
   params,
 }: {
@@ -30,11 +31,8 @@ const session =await getServerSession(authOptions);
       <div className="bg-gray-100  flex items-center justify-center w-full">
         <div className="bg-white p-6 rounded-lg shadow-md w-full">
           <div className="flex items-center space-x-4">
-            <img
-              src="https://via.placeholder.com/100"
-              alt="Profile Avatar"
-              className="w-16 h-16 rounded-full"
-            />
+            <UploadImage imgSrc={user.profileImgUrl}/>
+           
             <div>
               <h1 className="text-2xl font-semibold">{user.name}</h1>
               <p className="text-gray-600">@johndoe</p>

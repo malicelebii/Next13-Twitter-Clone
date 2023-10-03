@@ -14,6 +14,7 @@ export const GET = async (req: NextRequest,{params}:{params:{userId:string}}) =>
         name:true,
         followedByIDs:true,
         followingIDs:true,
+        profileImgUrl:true
       },
     });  
   } catch (error) {
