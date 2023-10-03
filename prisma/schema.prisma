@@ -17,6 +17,7 @@ model User {
   email     String   @unique
   name      String?
   password  String
+  profileImgUrl String?
   posts     Post[]
   followedBy    User[]   @relation("UserFollows", fields: [followedByIDs], references: [id])
   followedByIDs String[] @db.ObjectId
