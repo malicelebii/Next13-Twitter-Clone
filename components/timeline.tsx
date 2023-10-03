@@ -23,7 +23,7 @@ export default async function Timeline() {
   const list = await data?.json();
 
   return (
-    <div className=" p-5 flex justify-center mx-auto bg-black">
+    <div className="flex justify-center mx-auto border">
       {session ? (
         <div>
           <div className="">

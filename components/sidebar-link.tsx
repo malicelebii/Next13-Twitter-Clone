@@ -17,7 +17,7 @@ function SidebarLink({
         className="rounded-full p-2 hover:bg-slate-200 flex items-center justify-start gap-2 "
         href={path}
       >
-        <div className="flex items-center gap-3 text-xl">
+        <div className="flex items-center gap-3 text-2xl">
           <span> {<Icon />}</span>
           <p className=""> {text}</p>
         </div>

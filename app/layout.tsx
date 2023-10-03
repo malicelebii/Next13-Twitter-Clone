@@ -36,9 +36,9 @@ export default async function RootLayout({
     <html lang="en">
       <body className={inter.variable}>
         <Toaster />
-        <Suspense fallback="Loading...">
-          <AuthStatus />
-        </Suspense>
+        {/* <Suspense fallback="Loading...">
+          {/* <AuthStatus /> 
+        </Suspense> */}
         {children}
       </body>
     </html>

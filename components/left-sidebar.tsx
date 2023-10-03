@@ -10,12 +10,14 @@ import { authOptions } from "@/app/api/auth/[...nextauth]/route";
 
 export default async function LeftSidebar() {
   const session =await getServerSession(authOptions);
-  console.log(session);
-  let userId=session.token.sub;
+  let userId;
+  if (session) {
+    userId=session.token.sub;
+  }
   
   
   return (
-    <div className="flex flex-col bg-red-300 p-5 w-full items-start">
+    <div className="flex flex-col pl-5  items-start">
       <a className="p-2" href="">
         LOGO
       </a>

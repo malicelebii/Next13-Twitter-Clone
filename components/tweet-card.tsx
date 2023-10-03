@@ -25,7 +25,7 @@ function TweetCard({ author, content, createdAt }: TweetType) {
   const timeAgo = getTimeDifference(createdAt);
 
   return (
-    <div className="bg-white p-4 rounded-lg shadow-md flex w-96 mb-5">
+    <div className="bg-white p-4 border-b-2 shadow-md flex w-full">
       {/* Profil Fotoğrafı */}
       <div className="w-16 h-16 overflow-hidden rounded-full">
         <img
