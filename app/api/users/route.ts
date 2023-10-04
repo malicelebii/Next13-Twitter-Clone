@@ -5,6 +5,7 @@ export const GET = async () => {
   const users = await prisma?.user.findMany({
     include: {
       posts: true,
+      likedPosts:true
     },
   });
 
