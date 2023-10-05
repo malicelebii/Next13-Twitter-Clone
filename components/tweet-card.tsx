@@ -5,8 +5,11 @@ import { AiOutlineHeart, AiOutlineShareAlt } from "react-icons/ai";
 import { FaRetweet } from "react-icons/fa";
 import { FcLike } from "react-icons/fc";
 import { BiComment } from "react-icons/bi";
+import { IsTweetLiked } from "helpers/tweetInteractions";
 
-function TweetCard({ author, content, createdAt, id }: TweetType) {
+async function TweetCard({ author, content, createdAt, id }: TweetType) {
+  // IsTweetLiked(id);
+
   function getTimeDifference(createdAtTime) {
     const now = new Date();
     const tweetDate = new Date(createdAtTime);
@@ -63,9 +66,15 @@ function TweetCard({ author, content, createdAt, id }: TweetType) {
         <InteractButton id={id} type={"retweet"}>
           <FaRetweet />
         </InteractButton>
-        <InteractButton id={id} type={"like"}>
-          <AiOutlineHeart />
-        </InteractButton>
+        {(await IsTweetLiked(id)) ? (
+          <InteractButton id={id} type={"unlike"}>
+            <FcLike />
+          </InteractButton>
+        ) : (
+          <InteractButton id={id} type={"like"}>
+            <AiOutlineHeart />
+          </InteractButton>
+        )}
         <InteractButton id={id} type={"share"}>
           <AiOutlineShareAlt />
         </InteractButton>
