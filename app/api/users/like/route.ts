@@ -36,3 +36,31 @@ export const POST = async (req: NextRequest) => {
   return NextResponse.json(user);
 };
 
+
+export const DELETE = async (req: NextRequest) => {
+  const userId = await getUserId(req);
+  const res = await req.json();
+  const { postId } = res;
+
+  const user = await prisma.user.findUnique({
+    where: {
+      id: userId,
+    },
+    include:{
+      likedPosts:true
+    }
+  });
+
+  const userToUpdate = await prisma.user.update({
+    where: {
+      id: userId,
+    },
+    data: {
+      likedPosts: {
+        set: user?.likedPosts.filter(post=>post.id !== postId)
+      },
+    },
+  });
+
+  return NextResponse.json(userToUpdate);
+};
