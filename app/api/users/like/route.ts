@@ -2,20 +2,19 @@ import prisma from "@/lib/prisma";
 import { getUserId } from "helpers/user";
 import { NextRequest, NextResponse } from "next/server";
 
-export const GET =async (req: NextRequest) => {
-    const userId = await getUserId(req);
+export const GET = async (req: NextRequest) => {
+  const userId = await getUserId(req);
 
-    const user = await prisma.user.findUnique({
-      where:{
-        id:userId
-      },
-      include:{
-        likedPosts:true
-      }
-    })
-    return NextResponse.json(user);
-}
-
+  const user = await prisma.user.findUnique({
+    where: {
+      id: userId,
+    },
+    include: {
+      likedPosts: true,
+    },
+  });
+  return NextResponse.json(user);
+};
 
 export const POST = async (req: NextRequest) => {
   const userId = await getUserId(req);
@@ -36,7 +35,6 @@ export const POST = async (req: NextRequest) => {
   return NextResponse.json(user);
 };
 
-
 export const DELETE = async (req: NextRequest) => {
   const userId = await getUserId(req);
   const res = await req.json();
@@ -46,8 +44,8 @@ export const DELETE = async (req: NextRequest) => {
     where: {
       id: userId,
     },
-    include:{
-      likedPosts:true
+    select:{
+      likedPostIDs:true
     }
   });
 
@@ -56,8 +54,8 @@ export const DELETE = async (req: NextRequest) => {
       id: userId,
     },
     data: {
-      likedPosts: {
-        set: user?.likedPosts.filter(post=>post.id !== postId)
+      likedPostIDs: {
+        set: user?.likedPostIDs.filter((id) => id != postId),
       },
     },
   });

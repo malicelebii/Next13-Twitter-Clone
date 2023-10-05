@@ -13,9 +13,6 @@ export const likeTweet = async (postId) => {
 export const unlikeTweet = async (postId) => {
   const post = await fetch("/api/users/like", {
     method: "DELETE",
-    headers: {
-      "Content-Type": "application/json",
-    },
     body: JSON.stringify({ postId }),
   }).then((r) => r.json());
 };
