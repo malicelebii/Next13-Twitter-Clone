@@ -1,5 +1,7 @@
 import { cookies } from "next/dist/client/components/headers";
 
+let token:string 
+
 export const likeTweet = async (postId) => {
   const post = await fetch("/api/users/like", {
     method: "POST",
@@ -17,9 +19,24 @@ export const unlikeTweet = async (postId) => {
   }).then((r) => r.json());
 };
 
+export const reTweet = async (postId) => {
+  const post = await fetch(`/api/posts/${postId}`, { method: "GET" }).then(
+    (r) => r.json()
+  );
+
+  const createPost = await fetch("/api/posts", {
+    method: "POST",
+    headers: {
+      "Content-type": "application/json",
+      Authorization: `Bearer ${token}`,
+    },
+    body: JSON.stringify({ content: post.content }),
+  }).then((r) => r.json());
+};
+
 export const IsTweetLiked = async (postId) => {
   const cooks = cookies();
-  const token = cooks.get("next-auth.session-token")?.value;
+  token = cooks.get("next-auth.session-token")?.value;
 
   let data = await fetch(`http://localhost:3000/api/users/like`, {
     headers: {
