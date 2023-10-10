@@ -25,8 +25,8 @@ export const authOptions: NextAuthOptions = {
         if (!user || !(await compare(password, user.password))) {
           throw new Error("Invalid username or password");
         }
-
-        return user;
+       
+        return {id:user.id,email,name:user.name,image:user.profileImgUrl};
       },
     }),
   ],
@@ -35,7 +35,7 @@ export const authOptions: NextAuthOptions = {
     async jwt({ token}) {
       return token;
     },
-    async session({ session, token, user }) {
+    async session({ session, token }) {
       return { ...session ,token};
     },
   },
