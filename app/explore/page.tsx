@@ -8,15 +8,15 @@ export default function Explore() {
   return (
     <div className="flex justify-center m-5 mx-auto">
       {/* <div></div> */}
-      <div>
+      {/* <div>
         <LeftSidebar />
-        </div>
+        </div> */}
       <div className="flex flex-col justify-center items-center">
         <Search  />
       </div>
-      <div>
+      {/* <div>
       <LeftSidebar />
-      </div>
+      </div> */}
     </div>
   );
 }

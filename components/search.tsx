@@ -54,7 +54,7 @@ function Search() {
         <button className="absolute top-2 right-2" onClick={closeModal}>
           X
         </button>
-        <ul>
+        <ul className="flex flex-col">
           {results.users.map((user) => (
             <Link href={`/${user.id}`} key={user.id}>{user.name}</Link>
           ))}
