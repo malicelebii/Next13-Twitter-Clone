@@ -10,6 +10,9 @@ export const GET = async (
     where: {
       id: params.id,
     },
+    include:{
+      comments:true
+    }
   });
 
   return NextResponse.json(post);
