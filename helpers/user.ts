@@ -6,3 +6,11 @@ export const getUserId = async (req: NextRequest) => {
 
   return payload?.sub;
 };
+
+export const getAuthorImgUrl = async (userId: string) => {
+  const user = await fetch("http://localhost:3000/api/users/profile/" + userId).then((res) =>
+    res.json()
+  );
+
+  return user.profileImgUrl;
+};

@@ -6,15 +6,9 @@ import { FaRetweet } from "react-icons/fa";
 import { FcLike } from "react-icons/fc";
 import { BiComment } from "react-icons/bi";
 import { IsTweetLiked } from "helpers/tweetInteractions";
+import { getAuthorImgUrl } from "helpers/user";
 import Link from "next/link";
 
-const getAuthorImgUrl = async (userId: string) => {
-  const user = await fetch("http://localhost:3000/api/users/profile/" + userId).then((res) =>
-    res.json()
-  );
-
-  return user.profileImgUrl;
-};
 
 async function TweetCard({
   author,
