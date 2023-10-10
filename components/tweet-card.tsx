@@ -6,6 +6,7 @@ import { FaRetweet } from "react-icons/fa";
 import { FcLike } from "react-icons/fc";
 import { BiComment } from "react-icons/bi";
 import { IsTweetLiked } from "helpers/tweetInteractions";
+import Link from "next/link";
 
 async function TweetCard({ author, content, createdAt, id }: TweetType) {
   // IsTweetLiked(id);
@@ -34,28 +35,30 @@ async function TweetCard({ author, content, createdAt, id }: TweetType) {
 
   return (
     <div className="bg-white p-4 border-b-2 shadow-md w-full flex-col">
-      {/* Profil Fotoğrafı */}
-      <div className="flex w-full p-4">
-        <div className="w-16 h-16 overflow-hidden rounded-full">
-          <img
-            src="https://via.placeholder.com/150" // Profil fotoğrafı URL'si
-            alt="Profil Fotoğrafı"
-            className="object-cover w-full h-full"
-          />
-        </div>
-        {/* İçerik */}
-        <div className="flex-col  w-full ml-5">
-          <div className="flex flex-row justify-between flex-grow-0">
-            {/* Kullanıcı Adı */}
-            <div className="font-semibold text-lg">{author}</div>
-            <div className="font-semibold text-lg">{timeAgo}</div>
-            {/* <span className="font-semibold text-lg">{createdAt}</span> */}
-
-            {/* Tweet Metni */}
+      <Link href={`/post/${id}`}>
+        {/* Profil Fotoğrafı */}
+        <div className="flex w-full p-4">
+          <div className="w-16 h-16 overflow-hidden rounded-full">
+            <img
+              src="https://via.placeholder.com/150" // Profil fotoğrafı URL'si
+              alt="Profil Fotoğrafı"
+              className="object-cover w-full h-full"
+            />
           </div>
-          <div className="mt-2">{content}</div>
+          {/* İçerik */}
+          <div className="flex-col  w-full ml-5">
+            <div className="flex flex-row justify-between flex-grow-0">
+              {/* Kullanıcı Adı */}
+              <div className="font-semibold text-lg">{author}</div>
+              <div className="font-semibold text-lg">{timeAgo}</div>
+              {/* <span className="font-semibold text-lg">{createdAt}</span> */}
+
+              {/* Tweet Metni */}
+            </div>
+            <div className="mt-2">{content}</div>
+          </div>
         </div>
-      </div>
+      </Link>
       <div className="flex justify-around border-t align-middle pt-3 ">
         {/* <a onClick={likePost}>
           <BiComment />{" "}
