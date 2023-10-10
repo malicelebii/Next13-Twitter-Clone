@@ -5,15 +5,18 @@ export interface TweetType {
   author: string;
   content: string;
   createdAt : Date;
-  id:string
+  id:string,
+  userId : string,
 }
 
-function Tweets({ tweets }: { tweets: [TweetType] }) {
+
+
+async function Tweets({ tweets }: { tweets: [TweetType] }) {
   return (
     <div >
       {tweets.map((tweet, i) => (
         <div key={i}>
-          <TweetCard author={tweet.author} content={tweet.content} createdAt={tweet.createdAt} id={tweet.id}/>
+          <TweetCard author={tweet.author} content={tweet.content} createdAt={tweet.createdAt} id={tweet.id} userId={tweet.userId}/>
         </div>
       ))}
     </div>

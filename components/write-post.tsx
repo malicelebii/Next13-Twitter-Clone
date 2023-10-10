@@ -3,7 +3,7 @@ import Image from "next/image";
 import { redirect, useRouter } from "next/navigation";
 import { useState } from "react";
 
-export default function WritePost() {
+export default function WritePost({imageSrc}) {
   const [content, setContent] = useState("second");
   const router = useRouter();
 
@@ -33,13 +33,13 @@ export default function WritePost() {
 
   return (
     <div className="flex justify-center p-10 w-full">
-      <div className="rounded-full border p-3 w-16 h-16">
+      <div className="rounded-full border  w-16 h-16">
         <Image
-          src="/x.png" // Profil fotoğrafı URL'si
+          src={imageSrc} // Profil fotoğrafı URL'si
           alt="Profil Fotoğrafı"
-          className="object-cover w-full h-full "
-          width={15}
-          height={15}
+          className="object-cover w-full h-full rounded-full "
+          width="16"
+          height="16"
         />
       </div>
       <div className=" w-full">

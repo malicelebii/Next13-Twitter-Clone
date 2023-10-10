@@ -7,10 +7,12 @@ import { FcLike } from "react-icons/fc";
 import { BiComment } from "react-icons/bi";
 import { IsTweetLiked } from "helpers/tweetInteractions";
 import Link from "next/link";
+import { getAuthorImgUrl } from "helpers/user";
+import Image from "next/image";
 
-async function CommentCard({ author, content, createdAt, id }: TweetType) {
+async function CommentCard({ author, content, createdAt, id ,userId}: TweetType) {
   // IsTweetLiked(id);
-
+const profileImg = await getAuthorImgUrl(userId)
   function getTimeDifference(createdAtTime) {
     const now = new Date();
     const tweetDate = new Date(createdAtTime);
@@ -40,9 +42,11 @@ async function CommentCard({ author, content, createdAt, id }: TweetType) {
         <div className="flex w-full p-4">
           <div className="w-16 h-16 overflow-hidden rounded-full">
             <img
-              src="https://via.placeholder.com/150" // Profil fotoğrafı URL'si
+              src={profileImg} // Profil fotoğrafı URL'si
               alt="Profil Fotoğrafı"
-              className="object-cover w-full h-full"
+              className=" object-cover w-full h-full rounded-full"
+              // width={32}
+              // height={32}
             />
           </div>
           {/* İçerik */}
