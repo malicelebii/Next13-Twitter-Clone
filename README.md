@@ -35,13 +35,16 @@ yarn add
 </li>
 
 <li>
+  Create a cloudinary account and get your name
+</li>
+<li>
 Create .env file and set the following values into it
   
 ```bash
 DATABASE_URL = [YOUR_DATABASE_URL]
 NEXTAUTH_SECRET = [YOUR_SECRET]
 JWT_SECRET = [YOUR_SECRET]
-
+NEXT_PUBLIC_CLOUDINARY_NAME = [YOUR_CLOUDINARY_NAME]
 ```
 
 </li>
