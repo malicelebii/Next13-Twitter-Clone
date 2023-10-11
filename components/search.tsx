@@ -1,6 +1,6 @@
 "use client";
 import Link from "next/link";
-import React, { useState } from "react";
+import React, { useState ,useEffect} from "react";
 import { BiSearch } from "react-icons/bi";
 
 function Search() {
@@ -11,22 +11,42 @@ function Search() {
   const onSearchTextChange = (e) => {
     e.preventDefault();
     setSearchText(e.target.value);
-    findSearchRelated();
+    // findSearchRelated();
   };
 
-  const findSearchRelated = async () => {
-    const users = await fetch(`/api/users/${searchText}`, {
-      method: "GET",
-      headers: { "Content-type": "application/json" },
-    })
-    //   .then((data) => data.json())
-    //   .then((data) => setResults(data));
+  useEffect(() => {
+    if (searchText.trim() === "") {
+      setResults([]);
+      setShowModal(false);
+      return;
+    }
 
-    const data = await users.json();
-    setResults(data);
-    console.log(data);
-    setShowModal(true);
-  };
+    const fetchSearchResults = async () => {
+      try {
+        const response = await fetch(`/api/users/${searchText}`).then(r=>r.json());
+        setResults(response);
+        setShowModal(true);
+      } catch (error) {
+        console.error("API hatası:", error);
+      }
+    };
+
+    fetchSearchResults();
+  }, [searchText]); 
+
+  // const findSearchRelated = async () => {
+  //   const users = await fetch(`/api/users/${searchText}`, {
+  //     method: "GET",
+  //     headers: { "Content-type": "application/json" },
+  //   })
+  //   //   .then((data) => data.json())
+  //   //   .then((data) => setResults(data));
+
+  //   const data = await users.json();
+  //   setResults(data);
+  //   console.log(data);
+  //   setShowModal(true);
+  // };
 
 
   const closeModal = () => {
