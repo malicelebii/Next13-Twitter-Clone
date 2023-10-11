@@ -28,6 +28,8 @@ function UploadImage({ imgSrc }) {
   };
 
   const handleUpload = async (event) => {
+    const url =`https://api.cloudinary.com/v1_1/${process.env.NEXT_PUBLIC_CLOUDINARY_NAME}/image/upload` 
+    
     event.preventDefault();
 
     const form = event.currentTarget;
@@ -46,7 +48,7 @@ function UploadImage({ imgSrc }) {
     formData.append("upload_preset", "my_uploads");
 
     const data = await fetch(
-      "https://api.cloudinary.com/v1_1/dpnwtifk6/image/upload",
+     url,
       {
         method: "POST",
         body: formData,
