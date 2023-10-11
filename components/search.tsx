@@ -50,7 +50,7 @@ function Search() {
       </div>
       <div>
       {showModal && (
-        <div className="bg-white rounded-lg mt-2 p-4 max-w-md border border-gray-300">
+        <div className="bg-white rounded-lg mt-2 max-w-md border border-gray-300">
         <button className="absolute top-2 right-2" onClick={closeModal}>
           X
         </button>

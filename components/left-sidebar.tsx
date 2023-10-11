@@ -7,6 +7,7 @@ import { IoPersonOutline } from "react-icons/io5";
 import SidebarLink from "./sidebar-link";
 import { getServerSession } from "next-auth/next";
 import { authOptions } from "@/app/api/auth/[...nextauth]/route";
+import Image from "next/image";
 
 export default async function LeftSidebar() {
   const session =await getServerSession(authOptions);
@@ -19,7 +20,7 @@ export default async function LeftSidebar() {
   return (
     <div className="flex flex-col pl-5  items-start">
       <a className="p-2" href="">
-        LOGO
+        <Image src="/x.png" width={32} height={32} alt="LOGO"/>
       </a>
       <SidebarLink Icon={BiSolidHomeCircle} text="Anasayfa" path="/login" />
       <SidebarLink Icon={BsSearch} text="Keşfet" path="/explore" />
