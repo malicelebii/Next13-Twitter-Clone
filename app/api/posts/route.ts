@@ -11,7 +11,6 @@ interface PostType {
 
 export const GET = async (req: NextRequest) => {
   const posts = await prisma?.post.findMany();
-  // console.log(req.body);
   return NextResponse.json({ posts });
 };
 
@@ -28,7 +27,6 @@ export const POST = async (req: NextRequest) => {
     data: {  content, userId, author: user?.name },
   });
 
-  // console.log(req.credentials.);
 
   return NextResponse.json(newPost);
 };

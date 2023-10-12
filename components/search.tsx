@@ -34,20 +34,6 @@ function Search() {
     fetchSearchResults();
   }, [searchText]); 
 
-  // const findSearchRelated = async () => {
-  //   const users = await fetch(`/api/users/${searchText}`, {
-  //     method: "GET",
-  //     headers: { "Content-type": "application/json" },
-  //   })
-  //   //   .then((data) => data.json())
-  //   //   .then((data) => setResults(data));
-
-  //   const data = await users.json();
-  //   setResults(data);
-  //   console.log(data);
-  //   setShowModal(true);
-  // };
-
 
   const closeModal = () => {
     // Modal'ı gizle

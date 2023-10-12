@@ -33,7 +33,6 @@ function UploadImage({ imgSrc }) {
     event.preventDefault();
 
     const form = event.currentTarget;
-    console.log(form);
 
     const fileInput = Array.from(form.elements).find(
       ({ name }) => name === "file"

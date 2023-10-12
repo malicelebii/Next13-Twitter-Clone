@@ -39,7 +39,6 @@ export const POST = async (
     },
   });
 
-  console.log({ post });
 
   const comment = await prisma.comment.create({
     data: {
@@ -61,7 +60,5 @@ export const POST = async (
     },
   });
 
-  console.log({ comment });
-  console.log({ user });
   return NextResponse.json("başarılı")
 };

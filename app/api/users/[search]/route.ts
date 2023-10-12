@@ -13,6 +13,5 @@ export const GET = async (
 
   users = users.filter((user) => user.name?.toLowerCase().includes(params.search.toLowerCase()));
 
-  // console.log(req.body);
   return NextResponse.json({ users });
 };

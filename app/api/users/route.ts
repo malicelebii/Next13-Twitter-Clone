@@ -11,6 +11,5 @@ export const GET = async () => {
 
  
 
-  // console.log(req.body);
   return NextResponse.json({ users });
 };

@@ -15,7 +15,8 @@ export const GET = async (req: NextRequest,{params}:{params:{userId:string}}) =>
         followedByIDs:true,
         followingIDs:true,
         profileImgUrl:true,
-        commments:true
+        commments:true,
+        followedBy:true
       },
     });  
   } catch (error) {
@@ -24,6 +25,5 @@ export const GET = async (req: NextRequest,{params}:{params:{userId:string}}) =>
   }
   
 
-  // console.log(req.body);
   return NextResponse.json(user);
 };

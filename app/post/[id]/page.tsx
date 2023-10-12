@@ -14,7 +14,6 @@ async function Post({ params }: { params: { id: string } }) {
     cache: "no-store",
   });
   const post = await data.json();
-  console.log(post.comments);
 
   return (
     <div>

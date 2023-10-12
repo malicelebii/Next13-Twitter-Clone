@@ -3,7 +3,6 @@ import LeftSidebar from "@/components/left-sidebar";
 import WritePost from "@/components/write-post";
 import { getServerSession } from "next-auth";
 import { authOptions } from "./api/auth/[...nextauth]/route";
-import { getSession } from "next-auth/react";
 export const dynamic = 'force-dynamic'
 
 export default async function App({}) {
