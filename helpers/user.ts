@@ -14,3 +14,16 @@ export const getAuthorImgUrl = async (userId: string) => {
 
   return user.profileImgUrl;
 };
+
+export const getTheFollowers =async (userId:string) => {
+  const user = await fetch(`http://localhost:3000/api/users/profile/${userId}`,{cache:"no-cache"}).then(res=>res.json())
+  
+  return user.followedBy;
+}
+
+
+export const getTheFollowing =async (userId:string) => {
+  const user = await fetch(`http://localhost:3000/api/users/profile/${userId}`,{cache:"no-cache"}).then(res=>res.json())
+  
+  return user.following;
+}
