@@ -76,7 +76,7 @@ function Search() {
         </button>
         <ul className="flex flex-col">
           {results.users.map((user) => (
-            <Link href={`/${user.id}`} key={user.id}>{user.name}</Link>
+            <Link href={`/${user.id}`} onClick={()=>{closeModal() ;}} key={user.id}>{user.name}</Link>
           ))}
         </ul>
       </div>
