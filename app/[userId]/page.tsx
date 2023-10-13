@@ -4,6 +4,7 @@ import { getServerSession } from "next-auth/next";
 import { authOptions } from "@/app/api/auth/[...nextauth]/route";
 import { redirect } from "next/navigation";
 import UploadImage from "@/components/upload-image";
+import Link from "next/link";
 export default async function UserProfile({
   params,
 }: {
@@ -41,10 +42,10 @@ const session =await getServerSession(authOptions);
           <div className="mt-4">
             <div className="flex">
               <div className="mr-2">
-                <strong>{user.followedByIDs?.length}</strong> Takipçi
+              <Link href={`/${params.userId}/followers`} className="hover:underline">  <strong>{user.followedByIDs?.length}</strong> Takipçi</Link>
               </div>
               <div>
-                <strong>{user.followingIDs?.length}</strong> Takip Edilen
+              <Link href={`/${params.userId}/following`} className="hover:underline"> <strong>{user.followingIDs?.length}</strong> Takip Edilen </Link>
               </div>
             </div>
           </div>
