@@ -14,6 +14,13 @@ function InteractButton({ id, children, type }: InteractButtonType) {
   const [isOpenRetweetModal, setisOpenRetweetModal] = useState(false);
   const router = useRouter();
 
+  let classAttr =
+    type == "like"
+      ? "hover:rounded-full p-1 hover:bg-red-100 hover:text-red-500"
+      : type == "retweet"
+      ? "hover:rounded-full p-1 hover:bg-green-100 hover:text-green-500"
+      : "hover:rounded-full p-1 hover:bg-blue-100 hover:text-blue-500";
+
   const clickEvent = async (id: string) => {
     if (type == "like") {
       await likeTweet(id);
