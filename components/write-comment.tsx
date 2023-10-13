@@ -1,9 +1,9 @@
 "use client";
 import Image from "next/image";
-import {  useRouter } from "next/navigation";
+import { useRouter } from "next/navigation";
 import { useState } from "react";
 
-export default function WriteComment({id,imgSrc}) {
+export default function WriteComment({ id, imgSrc }) {
   const [content, setContent] = useState("second");
   const router = useRouter();
 
@@ -12,7 +12,7 @@ export default function WriteComment({id,imgSrc}) {
   };
 
   const onSubmit = async (e) => {
-    // e.preventDefault();
+    e.preventDefault();
     try {
       const response = await fetch(`/api/posts/${id}/comments`, {
         method: "POST",
@@ -21,14 +21,11 @@ export default function WriteComment({id,imgSrc}) {
         },
         body: JSON.stringify({ content }),
       });
-  
+
       if (response.ok) {
-        router.refresh();
-      }  
-    } catch (error) {
-      
-    }
-    
+        router.push(`/post/${id}`);
+      }
+    } catch (error) {}
   };
 
   return (
