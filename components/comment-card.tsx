@@ -34,6 +34,7 @@ const profileImg = await getAuthorImgUrl(userId)
   }
 
   const timeAgo = getTimeDifference(createdAt);
+  const data = { author, content, createdAt, id ,userId,timeAgo,profileImg}
 
   return (
     <div className="bg-white p-4 border-b-2 shadow-md w-full flex-col">
@@ -67,22 +68,22 @@ const profileImg = await getAuthorImgUrl(userId)
           {/* <a onClick={likePost}>
           <BiComment />{" "}
         </a> */}
-          <InteractButton id={id} type={"comment"}>
+          <InteractButton id={id} type={"comment"} data={data}>
             <BiComment />
           </InteractButton>
-          <InteractButton id={id} type={"retweet"}>
+          <InteractButton id={id} type={"retweet"} data={data}>
             <FaRetweet />
           </InteractButton>
           {(await IsTweetLiked(id)) ? (
-            <InteractButton id={id} type={"unlike"}>
+            <InteractButton id={id} type={"unlike"} data={data}>
               <FcLike />
             </InteractButton>
           ) : (
-            <InteractButton id={id} type={"like"}>
+            <InteractButton id={id} type={"like"} data={data}>
               <AiOutlineHeart />
             </InteractButton>
           )}
-          <InteractButton id={id} type={"share"}>
+          <InteractButton id={id} type={"share"} data={data}>
             <AiOutlineShareAlt />
           </InteractButton>
         </div>
