@@ -1,12 +1,13 @@
 // These styles apply to every route in the application
 import "@/styles/globals.css";
 import { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { Inter, Siemreap } from "next/font/google";
 import { Toaster } from "react-hot-toast";
-import AuthStatus from "@/components/auth-status";
 import {} from "react";
 import LeftSidebar from "@/components/left-sidebar";
 import Search from "@/components/search";
+import { getServerSession } from "next-auth";
+import { authOptions } from "./api/auth/[...nextauth]/route";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -34,6 +35,8 @@ export default async function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
+  const session = await getServerSession(authOptions);
+
   return (
     <html lang="en">
       <body className={inter.variable}>
@@ -42,13 +45,15 @@ export default async function RootLayout({
           {/* <Suspense fallback="Loading...">
           {/* <AuthStatus /> 
         </Suspense> */}
-          <div className="w-1/5 ">
+        {session &&<div className="w-1/5 ">
             <LeftSidebar />
-          </div>
+          </div>}
+          
           <div className="w-3/5 px-12">{children}</div>
-          <div className="w-1/5">
+          {session &&<div className="w-1/5">
             <Search />
-          </div>
+          </div> }
+          
         </div>
       </body>
     </html>
