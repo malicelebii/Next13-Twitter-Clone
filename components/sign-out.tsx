@@ -4,10 +4,10 @@ import { signOut } from "next-auth/react";
 export default function SignOut() {
   return (
     <button
-      className="text-stone-400 hover:text-stone-200 transition-all"
+      className="p-2 border bg-blue-300 rounded-full w-1/2"
       onClick={() => signOut()}
     >
-      Goddammit, sign me out!
+      Logout
     </button>
   );
 }
