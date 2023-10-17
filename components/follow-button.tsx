@@ -39,7 +39,7 @@ function FollowButton({followId,buttonType}) {
       };
     
   return (
-    <button onClick={buttonType=="follow"? handleFollow : handleUnfollow} className="mt-4 bg-blue-500 hover:bg-blue-600 text-white py-2 px-4 rounded">
+    <button onClick={buttonType=="follow"? handleFollow : handleUnfollow} className="ml-2 bg-blue-500 hover:bg-blue-600 text-white py-2 px-4 rounded">
    {buttonType}
   </button>
   )
